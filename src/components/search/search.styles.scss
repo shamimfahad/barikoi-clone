@@ -1,0 +1,30 @@
+.search-container {
+  padding-top: 2rem;
+  border-right: 1px solid #444;
+}
+
+.search-container h1 {
+  font-size: 30px;
+  padding-left: 2rem;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+form {
+  text-align: center;
+}
+
+form > input {
+  margin-top: 3rem;
+  height: 3.7rem;
+  width: 70%;
+  border-radius: 7px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+#search {
+  padding-left: 10px;
+}
