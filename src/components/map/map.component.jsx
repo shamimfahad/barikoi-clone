@@ -13,7 +13,7 @@ class MainMap extends React.Component {
       <div className="map-container">
         <Map
           google={this.props.google}
-          zoom={8}
+          zoom={14}
           style={mapStyles}
           initialCenter={{ lat: 23.810331, lng: 90.412521 }}
         >

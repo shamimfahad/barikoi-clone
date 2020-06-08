@@ -12,6 +12,15 @@ const Search = () => {
       <form>
         <input type="text" placeholder="Search" id="search" name="search" />
       </form>
+      <div className="suggestion-box">
+        <div className="suggestion">
+          <i className="fas fa-map-marker-alt fa-2x"></i>
+          <div className="address">
+            <h3 className="location-title">Place Name</h3>
+            <p className="location-desc">Full Address</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
