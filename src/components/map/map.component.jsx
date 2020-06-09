@@ -11,7 +11,7 @@ import './map.styles.scss';
 class MainMap extends React.Component {
   render() {
     const {
-      location: { lat, lng },
+      location: { latitude, longitude },
     } = this.props;
     const mapStyles = {
       width: '50vw',
@@ -24,9 +24,9 @@ class MainMap extends React.Component {
           google={this.props.google}
           zoom={14}
           style={mapStyles}
-          initialCenter={{ lat, lng }}
+          initialCenter={{ lat: latitude, lng: longitude }}
         >
-          <Marker position={{ lat, lng }} />
+          <Marker position={{ lat: latitude, lng: longitude }} />
         </Map>
       </div>
     );

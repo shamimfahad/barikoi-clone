@@ -23,6 +23,11 @@ const suggestionReducer = (state = INITIAL_STATE, action) => {
         ...state,
         errorMessage: action.payload,
       };
+    case suggestionActionTypes.CLEAR_SUGGESTION:
+      return {
+        ...state,
+        suggestions: [],
+      };
     default:
       return state;
   }

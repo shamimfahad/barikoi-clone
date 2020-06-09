@@ -14,3 +14,7 @@ export const fetchSuggestionsFailure = (errorMessage) => ({
   type: suggestionActionTypes.FETCH_SUGGESTION_FAILURE,
   payload: errorMessage,
 });
+
+export const clearSuggestion = () => ({
+  type: suggestionActionTypes.CLEAR_SUGGESTION,
+});

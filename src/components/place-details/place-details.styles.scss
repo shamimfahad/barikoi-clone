@@ -1,0 +1,27 @@
+.place-details {
+  width: 70%;
+  height: 200px;
+  display: flex;
+  border-radius: 7px;
+  margin-top: 1rem;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  justify-items: center;
+}
+
+.place-details .content {
+  padding: 0.5rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.place-details .content > * {
+  margin: 0.8rem 0;
+}
+
+.place-details .content :last-child {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.4rem;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+}

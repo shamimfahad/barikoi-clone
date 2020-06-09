@@ -2,8 +2,8 @@ import mapActionTypes from './map.types';
 
 const INITIAL_STATE = {
   location: {
-    lat: 23.810331,
-    lng: 90.412521,
+    latitude: 23.810331,
+    longitude: 90.412521,
   },
 };
 
@@ -12,6 +12,7 @@ const mapReducer = (state = INITIAL_STATE, action) => {
     case mapActionTypes.SET_MARKER:
       return {
         ...state,
+        location: action.payload,
       };
 
     default:
