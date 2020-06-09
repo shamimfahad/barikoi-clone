@@ -1,29 +1,44 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+
+import { selectLocation } from '../../redux/map/map.selectors';
 
 import './map.styles.scss';
 
 class MainMap extends React.Component {
   render() {
+    const {
+      location: { lat, lng },
+    } = this.props;
     const mapStyles = {
       width: '50vw',
       height: '100%',
     };
+
     return (
       <div className="map-container">
         <Map
           google={this.props.google}
           zoom={14}
           style={mapStyles}
-          initialCenter={{ lat: 23.810331, lng: 90.412521 }}
+          initialCenter={{ lat, lng }}
         >
-          <Marker position={{ lat: 23.810331, lng: 90.412521 }} />
+          <Marker position={{ lat, lng }} />
         </Map>
       </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAzMOYlCwHnPE4uBTLsMNPxnbv7EKhD8DA',
-})(MainMap);
+const mapStateToProps = createStructuredSelector({
+  location: selectLocation,
+});
+
+export default connect(mapStateToProps)(
+  GoogleApiWrapper({
+    apiKey: 'AIzaSyAzMOYlCwHnPE4uBTLsMNPxnbv7EKhD8DA',
+  })(MainMap)
+);

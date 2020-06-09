@@ -1,0 +1,21 @@
+.suggestion {
+  width: 70%;
+  display: flex;
+  border-radius: 7px;
+  margin: 3px 0;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion:hover {
+  cursor: pointer;
+  background: rgb(245, 245, 245);
+}
+
+.suggestion i {
+  padding: 10px;
+  color: #4cdfb5;
+}
+
+.suggestion .address {
+  padding: 5px;
+}
