@@ -3,52 +3,65 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectSuggestions } from '../../redux/suggestion/suggestion.selectors';
+import { selectDetails } from '../../redux/map/map.selectors';
 import {
   fetchSuggestionsStart,
   clearSuggestion,
 } from '../../redux/suggestion/suggestion.actions';
+
+import { showDetails, hideDetails } from '../../redux/map/map.actions';
 
 import Suggestion from '../suggestion/suggestion.component';
 import PlaceDetails from '../place-details/place-details.component';
 
 import './search.styles.scss';
 
-const Search = ({ fetchSuggestionsStart, suggestions, clearSuggestion }) => {
+const Search = ({
+  fetchSuggestionsStart,
+  suggestions,
+  clearSuggestion,
+  showDetails,
+  hideDetails,
+  selectDetails,
+}) => {
   const [searchString, setSearchString] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [place, setPlace] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     e.preventDefault();
     setInputValue(e.target.value);
     setSearchString(e.target.value);
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    fetchSuggestionsStart(searchString);
+    if (e.target.value === '') {
+      clearSuggestion();
+    }
+    hideDetails();
+    setTimeout(() => {
+      fetchSuggestionsStart(searchString);
+    }, 300);
   };
 
   const updateInput = (location) => {
     const { area, city } = location;
     const address = `${area}, ${city}`;
     setInputValue(address);
-    setPlace(true);
+    showDetails();
     clearSuggestion();
   };
 
   return (
     <div className="search-container">
-      <h1>
+      <h1 onClick={() => (window.location.href = '/')}>
         Bari<span style={{ color: '#4CDFB5' }}>Koi</span>{' '}
         <span style={{ color: '#4CDFB5' }}>Clone</span>
       </h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           placeholder="Search"
           id="search"
           name="search"
+          autoComplete="off"
           onChange={handleChange}
           value={inputValue}
         />
@@ -63,21 +76,26 @@ const Search = ({ fetchSuggestionsStart, suggestions, clearSuggestion }) => {
                 updateInput={updateInput}
               />
             ))
-          : ''}
+          : null}
       </div>
-      <div className="details-box">{place ? <PlaceDetails /> : ''}</div>
+      <div className="details-box">
+        {selectDetails ? <PlaceDetails /> : null}
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   suggestions: selectSuggestions,
+  selectDetails,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchSuggestionsStart: (searchString) =>
     dispatch(fetchSuggestionsStart(searchString)),
   clearSuggestion: () => dispatch(clearSuggestion()),
+  showDetails: () => dispatch(showDetails()),
+  hideDetails: () => dispatch(hideDetails()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

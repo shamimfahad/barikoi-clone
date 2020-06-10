@@ -12,10 +12,10 @@ const PlaceDetails = ({ location }) => {
   return (
     <div className="place-details">
       <div className="content">
-        <h3>{`${area}, ${city}`}</h3>
-        <h5>{`${address}`} </h5>
-        <p>Place Code: {id}</p>
-        <p>{pType}</p>
+        <div>{`${area}, ${city}`}</div>
+        <div>{`${address}`} </div>
+        <p className="p-code">Place Code: {id}</p>
+        {pType ? <p className="p-type">{pType}</p> : null}
       </div>
     </div>
   );

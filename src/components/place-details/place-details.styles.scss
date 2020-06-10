@@ -1,10 +1,11 @@
 .place-details {
   width: 70%;
-  height: 200px;
   display: flex;
   border-radius: 7px;
   margin-top: 1rem;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #4cdfb5;
+  border-radius: 5px;
   flex-direction: column;
   justify-items: center;
 }
@@ -19,9 +20,14 @@
   margin: 0.8rem 0;
 }
 
-.place-details .content :last-child {
+.place-details .content .p-code {
+  font-weight: lighter;
+}
+
+.place-details .content .p-type {
   display: inline-block;
   margin-top: auto;
-  padding: 0.4rem;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.3rem 0.5rem;
+  border: 2px solid #4cdfb5;
+  border-radius: 5px;
 }
